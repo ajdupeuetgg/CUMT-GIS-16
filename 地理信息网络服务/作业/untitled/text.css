@@ -1,0 +1,22 @@
+#mv{
+    background-color: rgba(0, 0, 0, .8);
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    margin: 8px;
+    z-index: 10;
+}
+video{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 80%;
+    max-width: 80%;
+    margin: auto;
+    object-fit: contain;
+}

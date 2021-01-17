@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Jay's Albums</title>
+    <link rel="stylesheet" href="jay.css" type="text/css">
+    <link rel="icon" href="album_img/唱片.png" type="image/png">
+    <link href="animate.css-master/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript">
+    var r = "";
+    function play(con) {
+        r = con.innerText;
+        const audio = document.getElementById(r);
+        if (audio) {
+            if (audio.paused) {
+                audio.play();
+            }else {
+                audio.pause();
+                audio.currentTime = audio.currentTime;
+            }
+        }else {
+            alert('找不到歌曲！')
+        }
+    }
+    function play_mv(con) {
+        r = con.innerText;
+        const address = document.getElementById(r);
+        if (address) {
+            address.style.display = 'block';
+        }
+    }
+    function quit() {
+        const address = document.getElementById(r);
+        address.style.display = 'none';
+    }
+</script>
+<audio id="说好的幸福呢" src="music/说好的幸福呢.mp3"></audio>
+<audio id="蒲公英的约定" src="music/蒲公英的约定.mp3"></audio>
+<audio id="夜的第七章" src="music/夜的第七章.mp3"></audio>
+<audio id="黑色毛衣" src="music/黑色毛衣.mp3"></audio>
+<audio id="烟花易冷" src="music/烟花易冷.mp3"></audio>
+<audio id="七里香" src="music/七里香.mp3"></audio>
+<audio id="发如雪" src="music/发如雪.mp3"></audio>
+<audio id="龙卷风" src="music/龙卷风.mp3"></audio>
+<audio id="搁浅" src="music/搁浅.mp3"></audio>
+<audio id="心雨" src="music/心雨.mp3"></audio>
+<audio id="枫" src="music/枫.mp3"></audio>
+<div class="mv" id="夜曲">
+    <video controls autoplay>
+        <source src="http://113.142.51.17/mv.music.tc.qq.com/Ab6YfAfI7g2Wn3BnyWQbCIiw9Q39jMFuUZ4Jtn4snBpc/725B999F35D19EBF32747EE47B3FBF2AC86820EF3C63766796A6685BB2EC4E8A4D1D4EFA7EB7F60BC48206C851F1EF29ZZqqmusic_default/1049_M2102573000Y0z8j1PR4GY1001540857.f30.mp4?fname=1049_M2102573000Y0z8j1PR4GY1001540857.f30.mp4" type="video/mp4">
+    </video>
+    <a style="float: right" onclick="quit()" href="#"><img src="取消.png" alt="退出"></a>
+</div>
+<div class="mv" id="忍者">
+    <video controls autoplay>
+        <source src="http://113.142.51.20/mv.music.tc.qq.com/APh1vwXor5mqZB0wJHFAMdLCkoqKoJVSQKVj7XLi4-Ag/F9C22AD0AA1AF908B348DEC7677708F74BE265A71B29925F4A7AD4307D5C6625DB59080AF977574B49E649C2A8613EC2ZZqqmusic_default/1049_M0100549001tUiMQ3yV0CW1000055260.f20.mp4?fname=1049_M0100549001tUiMQ3yV0CW1000055260.f20.mp4" type="video/mp4">
+    </video>
+    <a style="float: right" onclick="quit()" href="#"><img src="取消.png" alt="退出"></a>
+</div>
+<div class="mv" id="晴天">
+    <video controls autoplay>
+        <source src="http://113.142.51.25/mv.music.tc.qq.com/AKd3auKmiSdmKWUKLTqYPxno9f-phrB5apFeQYJKNnYc/56888C62F756A34DF634EE7A1D89E05ED95EA07FDD3126B6B880AF4532C83EFD373D42BDC80221FC284B08305092A651ZZqqmusic_default/1049_M0101155002LybLl3CXY3b1001551691.f30.mp4?fname=1049_M0101155002LybLl3CXY3b1001551691.f30.mp4" type="video/mp4">
+    </video>
+    <a style="float: right" onclick="quit()" href="#"><img src="取消.png" alt="退出"></a>
+</div>
+    <div class="back_ground">
+        <div class="list">
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/JAY.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">可爱女人</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">完美主义</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">星晴</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">娘子</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">斗牛</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">黑色幽默</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">伊斯坦堡</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">印第安老斑鸠</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">龙卷风</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">反方向的钟</a></li>
+                        </ul>
+                        <h4 class="name_time">2000-11-07 &nbsp; Jay</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/范特西.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">爱在西元前</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">爸，我回来了</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">简单爱</a></li>
+                            <li><a style="cursor:pointer" onclick="play_mv(this)">忍者</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">开不了口</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">上海一九四三</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">对不起</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">威廉古堡</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">双节棍</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">安静</a></li>
+                        </ul>
+                        <h4 class="name_time">2001-9-20 &nbsp; 范特西</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/八度空间.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">半兽人</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">半岛铁盒</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">暗号</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">龙拳</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">火车叨位去</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">分裂</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">爷爷泡的茶</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">回到过去</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">米兰的小铁匠</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">最后的战役</a></li>
+                        </ul>
+                        <h4 class="name_time">2002-7-18 &nbsp; 八度空间</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/叶惠美.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">以父之名</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">懦夫</a></li>
+                            <li><a style="cursor:pointer" onclick="play_mv(this)">晴天</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">三年二班</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">东风破</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">你听得到</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">同一种调调</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">她的睫毛</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">爱情悬崖</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">梯田</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">双刀</a></li>
+                        </ul>
+                        <h4 class="name_time">2003-7-31 &nbsp; 叶惠美</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/寻找周杰伦.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">轨迹</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">断了的弦</a></li>
+                        </ul>
+                        <h4 class="name_time">2003-11-01 &nbsp; 寻找周杰伦</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/七里香.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">我的地盘</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">七里香</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">借口</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">外婆</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">将军</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">搁浅</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">乱舞春秋</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">困兽之斗</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">园游会</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">止战之殇</a></li>
+                        </ul>
+                        <h4 class="name_time">2004-08-03 &nbsp; 七里香</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/十一月的萧邦.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play_mv(this)">夜曲</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">蓝色风暴</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">发如雪</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">黑色毛衣</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">四面楚歌</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">枫</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">浪漫手机</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">逆鳞</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">麦芽糖</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">珊瑚海</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">漂移</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">一路向北</a></li>
+                        </ul>
+                        <h4 class="name_time">2005-11-01 &nbsp; 十一月的萧邦</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/霍元甲.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">霍元甲</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">献世</a></li>
+                        </ul>
+                        <h4 class="name_time">2006-01-20 &nbsp; 霍元甲</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/依然范特西.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">夜的第七章</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">听妈妈的话</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">千里之外</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">本草纲目</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">退后</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">红模仿</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">心雨</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">白色风车</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">迷迭香</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">菊花台</a></li>
+                        </ul>
+                        <h4 class="name_time">2006-09-01 &nbsp; 依然范特西</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/黄金甲.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">黄金甲</a></li>
+                        </ul>
+                        <h4 class="name_time">2006-12-11 &nbsp; 黄金甲</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/我很忙.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">牛仔很忙</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">彩虹</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">青花瓷</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">阳光宅男</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">蒲公英的约定</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">无双</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">我不配</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">扯</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">甜甜的</a></li>
+                            <li><a href="#">最长的电影</a></li>
+                        </ul>
+                        <h4 class="name_time">2007-11-02 &nbsp; 我很忙</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/大灌篮.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">周大侠</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">战舞</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">秘密花园</a></li>
+                        </ul>
+                        <h4 class="name_time">2008-1-18 &nbsp; 大灌篮</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/魔杰座.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">龙战骑士</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">给我一首歌的时间</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">蛇舞</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">花海</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">魔术先生</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">说好的幸福呢</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">兰亭序</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">流浪诗人</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">时光机</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">乔克叔叔</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">稻香</a></li>
+                        </ul>
+                        <h4 class="name_time">2008-10-15 &nbsp; 魔杰座</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/跨时代.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">跨时代</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">说了再见</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">烟花易冷</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">免费教学录影带</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">好久不见</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">雨下一整晚</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">嘻哈空姐</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">我落泪情绪零碎</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">爱的飞行日记</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">自导自演</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">超人不会飞</a></li>
+                        </ul>
+                        <h4 class="name_time">2010-05-18 &nbsp; 跨时代</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/惊叹号.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">惊叹号</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">迷魂曲</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">Mine Mine</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">公主病</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">你好吗</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">疗伤烧肉粽</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">琴伤</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">水手怕水</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">世界未末日</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">皮影戏</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">超跑女神</a></li>
+                        </ul>
+                        <h4 class="name_time">2011-11-11 &nbsp; 惊叹号</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/十二新作.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">四季列车</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">手语</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">公公偏头痛</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">明明就</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">傻笑</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">比较大的大提琴</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">爱你没差</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">红尘客栈</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">梦想启动</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">大笨钟</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">哪里都是你</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">乌克丽丽</a></li>
+                        </ul>
+                        <h4 class="name_time">2012-12-28 &nbsp; 十二新作</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/哎呦，不错哦.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">阳明山</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">窃爱</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">算什么男人</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">天涯过客</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">怎么了</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">一口气全念对</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">我要夏天</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">手写的从前</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">鞋子特大号</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">听爸爸的话</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">美人鱼</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">听见下雨的声音</a></li>
+                        </ul>
+                        <h4 class="name_time">2014-12-26 &nbsp; 哎哟，不错哦</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/周杰伦的床边故事.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">床边故事</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">说走就走</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">一点点</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">前世情人</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">英雄</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">不该（with aMEI）</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">土耳其冰淇淋</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">告白气球</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">Now You See Me</a></li>
+                            <li><a style="cursor:pointer" onclick="play(this)">爱情废柴</a></li>
+                        </ul>
+                        <h4 class="name_time">2016-06-24 &nbsp; 周杰伦的床边故事</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="album_img">
+                <div class="cover0">
+                    <a href="#" target="_self">
+                        <img src="album_img/等你下课.jpg" alt="JAY" class="cover1">
+                        <ul>
+                            <li><a style="cursor:pointer" onclick="play(this)">等你下课</a></li>
+                        </ul>
+                        <h4 class="name_time">2018-01-18 &nbsp; 等你下课</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="image"></div>
+    </div>
+<!--<script>-->
+<!--    const el = document.getElementsByClassName('cover0');-->
+<!--    for (i = 0; i < el.length; i++) {-->
+<!--        el[i].classList.add('animated', 'flash');-->
+<!--    }-->
+<!--</script>-->
+</body>
+</html>

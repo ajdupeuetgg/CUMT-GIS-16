@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+}
+body{
+    background-image: url("QJ6997895512.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.name_time{
+    color: #FFFFFF;
+}
+.back_ground{
+    width: 100%;
+    height: 2000px;
+}
+.back_ground:before{
+    content: "";
+    position: absolute;
+    background-image: url("QJ6997895512.jpg");
+    filter:blur(20px);
+    z-index: -1;
+    width: 100%;
+    height: 2000px;
+    background-size: cover;
+}
+.image{
+    background-image: url("timg-3.png");
+    background-position: right;
+    margin-left: 580px;
+    background-size: 620px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    width: 900px;
+    height: 100%;
+}
+.list{
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+.cover0{
+    background-image: url("album_img/album_cover.png");
+    background-repeat: no-repeat;
+    background-size: 255px 225px;
+    margin: 35px;
+    clear: left;
+ }
+.cover1{
+    width: 225px;
+    clear: left;
+}
+.album_img{
+    width: 325px;
+    height: auto;
+    float: left;
+    position: relative;
+    margin-left: 16px;
+}
+.album_img ul{
+    list-style: none;
+    position: absolute;
+    background: inherit;
+    left: 260px;
+    top: 35px;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: 250ms ease;
+    display: block;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 225px;
+    padding-left: 22px;
+}
+.album_img ul li{
+    font-family: "Microsoft Sans Serif", sans-serif;
+    font-weight: bold;
+    width: 140px;
+}
+li a{
+    color: #ffffff;
+    text-decoration: none;
+}
+li a:hover{
+    color: #b74e07;
+    transition: 150ms ease;
+}
+.album_img ul:before, .album_img ul:after{
+    content: "";
+    display: table;
+}
+.album_img ul:after{
+    clear: both;
+}
+.album_img:hover ul{
+    visibility: visible;
+    opacity: 0.9;
+}
+.mv{
+    background-color: rgba(0, 0, 0, .8);
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    margin: 0;
+    z-index: 10;
+}
+video{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 80%;
+    max-width: 80%;
+    margin: auto;
+    object-fit: contain;
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>第二次上机</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            position: absolute;
+        }
+        button {
+            margin: 8px 8px 4px;
+            color: white;
+            background-color: #93c0ff;
+            border: none;
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 1.4;
+            border-radius: 4px;
+            padding: 10px 15px;
+            outline: none;
+            cursor: pointer;
+        }
+        .but:after{
+            margin-left: 16px;
+            vertical-align: middle;
+            content: "";
+            border-top: 8px solid;
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+            border-bottom: 0;
+            transition: border-color .25s, color .25s;
+            display: inline-block;
+        }
+        ul {
+            display: none;
+            background-color: #f3f4f5;
+            width: 140px;
+            border: none;
+            margin-top: 0;
+            margin-left: 8px;
+            padding: 0;
+            font-size: 14px;
+            border-radius: 4px;
+            box-shadow: none;
+            text-decoration: none;
+        }
+        li {
+            border-radius: 4px;
+            padding: 8px;
+            display: list-item;
+            list-style-type: none;
+            transition: color .25s linear, background-color .25s linear;
+            cursor: pointer;
+        }
+        li:hover {
+            transition: color .25s linear, background-color .25s linear;
+            background-color: #cdd3d8;
+        }
+        a {
+            padding-left: 5px;
+            font-size: 15px;
+            font-weight: normal;
+            color: #4d5a67;
+            text-decoration:none;
+            cursor: pointer;
+        }
+        .twolv li ul {
+            margin-left: 133px;
+            display: none;
+            position: absolute;
+            width: 60px;
+            color: #4d5a67;
+        }
+        .twolv li:hover ul {
+            display: block;
+        }
+        #board {
+            width: 270px;
+            height: auto;
+            background-color: rgba(255, 255, 255, .7);
+            float: right;
+            margin: 468px 30px 30px;
+            border-radius: 8px;
+        }
+        .message {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .message div {
+            width: 10px;
+            height: 10px;
+            float: left;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        #board button {
+            width: 110px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+<div id="board" style="position: relative">
+    <button onclick="sortByTime()" style="margin-left: 18px">按时间排序</button>
+    <button onclick="sortByRoute()">按路程排序</button>
+</div>
+<div class="btn" style="position: relative">
+    <button class="but" type="button" onclick="extend()">FUNCTIONS</button>
+    <ul class="twolv">
+        <li><a onclick="searchClass()">查找教室</a></li>
+        <li><a onclick="searchSuper()">查找超市</a></li>
+        <li><a>步行去环测大楼</a>
+            <ul style="top: 115px">
+                <li onclick="walkingTo1()">一食堂</li>
+                <li onclick="walkingTo2()">二食堂</li>
+                <li onclick="walkingTo3()">三食堂</li>
+            </ul>
+        </li>
+        <li><a>骑行去环测大楼</a>
+            <ul style="top: 146px">
+                <li onclick="ridingTo1()">一食堂</li>
+                <li onclick="ridingTo2()">二食堂</li>
+                <li onclick="ridingTo3()">三食堂</li>
+            </ul>
+        </li>
+        <li><a>开车去环测大楼</a>
+            <ul style="top: 177px">
+                <li onclick="drivingTo1()">一食堂</li>
+                <li onclick="drivingTo2()">二食堂</li>
+                <li onclick="drivingTo3()">三食堂</li>
+            </ul>
+        </li>
+        <li><a onclick="removeAll()">清空所有元素</a></li>
+    </ul>
+</div>
+
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=2347242264cb5a7701b21143c6eb960c"></script>
+<script type="text/javascript">
+    var allMessages = [];
+    var boardCon = document.getElementById('board').innerHTML;
+
+    var map = new AMap.Map('container');
+
+    AMap.plugin('AMap.Geocoder', function() {
+        var geocoder = new AMap.Geocoder;
+        geocoder.getLocation('中国矿业大学南湖校区', function (status, result) {
+            if (status === 'complete' && result.geocodes.length) {
+                lnglat = result.geocodes[0].location;
+                map.setZoomAndCenter(15, [lnglat.lng, lnglat.lat]);
+            } else {
+                alert('获取中心点失败！请刷新重试！')
+            }
+        })
+    });
+
+    function removeAll() {
+        map.clearMap();
+        var con = document.getElementById('board');
+        con.innerHTML = boardCon;
+        allMessages = [];
+    }
+
+    function createBoradMessage(color, from, way, route, time) {
+        var con = document.getElementById('board');
+        fRoute = formatRoute(route);
+        fTime = formatTime(time);
+        mes = "<div class=\"message\">\n" +
+              "<div style=\"background-color:" + color +";\"></div>\n" +
+              "<span>从" + from + "食堂 " + way + " " + fRoute + "</span><span style=\"margin-left: 12px\">" +
+              fTime + "</span></div>";
+        con.innerHTML += mes;
+        information = {"route": route, "time": time, "con": mes};
+        allMessages.push(information);
+    }
+
+    function compare(prop) {
+        return function (a, b) {
+            return a[prop] - b[prop]
+        }
+    }
+
+    function sortByRoute() {
+        allMessages.sort(compare('route'));
+        var con = document.getElementById('board');
+        con.innerHTML = boardCon;
+        for (var i = 0; i < allMessages.length; i++){
+            con.innerHTML += allMessages[i].con
+        }
+    }
+
+    function sortByTime() {
+        allMessages.sort(compare('time'));
+        var con = document.getElementById('board');
+        con.innerHTML = boardCon;
+        for (var i = 0; i < allMessages.length; i++){
+            con.innerHTML += allMessages[i].con
+        }
+    }
+
+    function searchSuper(){
+        AMap.service(["AMap.PlaceSearch"], function() {
+            var placeSearch = new AMap.PlaceSearch({
+                map: map,
+                city:'0516',
+                autoFitView: true
+            });
+            var polygonArr = [
+                [117.135884, 34.209225],
+                [117.137681, 34.212237],
+                [117.136287, 34.212933],
+                [117.139256, 34.217214],
+                [117.144301, 34.221819],
+                [117.156720, 34.218914],
+                [117.144097, 34.205676]
+            ];
+            var polygon = new AMap.Polygon({
+                path: polygonArr,
+                fillOpacity: 0
+            });
+            polygon.hide();
+            placeSearch.searchInBounds('超市', polygon, function (status, result) {
+                console.log(result);
+                map.setFitView();
+                polygon.hide();
+            });
+        });
+    }
+
+    function searchClass() {
+        AMap.service(["AMap.PlaceSearch"], function() {
+            var placeSearch = new AMap.PlaceSearch({
+                map: map,
+                type: "科教文化服务|科教文化场所",
+                city:'0516',
+                autoFitView: true
+            });
+            var polygonArr = [
+                [117.135884, 34.209225],
+                [117.137681, 34.212237],
+                [117.136287, 34.212933],
+                [117.139256, 34.217214],
+                [117.144301, 34.221819],
+                [117.156720, 34.218914],
+                [117.144097, 34.205676]
+            ];
+            var polygon = new AMap.Polygon({
+                path: polygonArr,
+                fillOpacity: 0
+            });
+            placeSearch.searchInBounds('楼', polygon, function (status, result) {
+                map.setFitView();
+            });
+        });
+    }
+
+    function extend() {
+        var u = document.getElementsByTagName("ul");
+        if (u[0].style.display === "block"){
+            u[0].style.display = "none";
+        }else {
+            u[0].style.display = "block";
+        }
+    }
+
+    function drivingTo1() {
+        AMap.plugin('AMap.Driving', function() {
+            var driving1 = new AMap.Driving({
+                map: map,
+                policy: AMap.DrivingPolicy.LEAST_TIME
+            });
+            var points1 = [
+                { keyword: '中国矿业大学南湖校区学生第一餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving1.search(points1, function (status, result) {
+                createBoradMessage("#9C9C9C", "一", "驾车", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    function drivingTo2() {
+        AMap.plugin('AMap.Driving', function() {
+            var driving2 = new AMap.Driving({
+                map: map,
+                policy: AMap.DrivingPolicy.LEAST_TIME
+            });
+            var points2 = [
+                { keyword: '中国矿业大学南湖教工餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving2.search(points2, function (status, result) {
+                createBoradMessage("#9C9C9C", "二", "驾车", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    function drivingTo3() {
+        AMap.plugin('AMap.Driving', function() {
+            var driving3 = new AMap.Driving({
+                map: map,
+                policy: AMap.DrivingPolicy.LEAST_TIME
+            });
+            var points3 = [
+                { keyword: '中国矿业大学南湖校区学生第三餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving3.search(points3, function (status, result) {
+                createBoradMessage("#9C9C9C", "三", "驾车", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+
+    function walkingTo1() {
+        AMap.plugin('AMap.Walking', function() {
+            var driving1 = new AMap.Walking({
+                map: map,
+            });
+            var points1 = [
+                { keyword: '中国矿业大学南湖校区学生第一餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving1.search(points1, function (status, result) {
+                createBoradMessage("#0E7AFE", "一", "步行", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    function walkingTo2() {
+        AMap.plugin('AMap.Walking', function() {
+            var driving2 = new AMap.Walking({
+                map: map,
+            });
+            var points2 = [
+                { keyword: '中国矿业大学南湖教工餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving2.search(points2, function (status, result) {
+                createBoradMessage("#0E7AFE", "二", "步行", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    function walkingTo3() {
+        AMap.plugin('AMap.Walking', function() {
+            var driving3 = new AMap.Walking({
+                map: map,
+            });
+            var points3 = [
+                { keyword: '中国矿业大学南湖校区学生第三餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving3.search(points3, function (status, result) {
+                createBoradMessage("#0E7AFE", "三", "步行", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    
+    function ridingTo1() {
+        AMap.plugin('AMap.Riding', function() {
+            var driving1 = new AMap.Riding({
+                map: map,
+            });
+            var points1 = [
+                { keyword: '中国矿业大学南湖校区学生第一餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving1.search(points1, function (status, result) {
+                createBoradMessage("#289249", "一", "骑行", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    function ridingTo2() {
+        AMap.plugin('AMap.Riding', function() {
+            var driving2 = new AMap.Riding({
+                map: map,
+            });
+            var points2 = [
+                { keyword: '中国矿业大学南湖教工餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving2.search(points2, function (status, result) {
+                createBoradMessage("#289249", "二", "骑行", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+    function ridingTo3() {
+        AMap.plugin('AMap.Riding', function() {
+            var driving3 = new AMap.Riding({
+                map: map,
+            });
+            var points3 = [
+                { keyword: '中国矿业大学南湖校区学生第三餐厅', city:'徐州' },
+                { keyword: '中国矿业大学南湖校区环境与测绘学院', city:'徐州' }
+            ];
+            driving3.search(points3, function (status, result) {
+                createBoradMessage("#289249", "三", "骑行", result.routes[0].distance, result.routes[0].time);
+            });
+        })
+    }
+
+    function formatTime(t) {
+        return Math.floor(t / 60) + "分" + t % 60 + "秒"
+    }
+    function formatRoute(w) {
+        return Math.round(w / 1000 * 100) / 100 + "米"
+    }
+</script>
+
+</body>
+</html>
