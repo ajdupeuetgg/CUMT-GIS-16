@@ -1,0 +1,15 @@
+<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Name>Python_Addin</Name><AddInID>{07d28115-615c-467d-91c6-87e202ee364f}</AddInID><Description>New Addin</Description><Version>0.1</Version><Image /><Author>Untitled</Author><Company>Untitled</Company><Date>01/20/2021</Date><Targets><Target name="Desktop" version="10.2" /></Targets><AddIn language="PYTHON" library="ADD_addin.py" namespace="ADD_addin"><ArcMap>
+    <Commands>
+        <Button caption="Select fileway" category="Python_Addin" class="ButtonClass1" id="ADD_addin.button" image="" message="" tip=""><Help heading="" /></Button>
+        <ComboBox caption="Select content" category="Python_Addin" class="ComboBoxClass3" id="ADD_addin.combobox" itemSizeString="WWWWWW" message="" rows="4" sizeString="WWWWWW" tip=""><Help heading="" /></ComboBox>
+        <ComboBox caption="Select partten" category="Python_Addin" class="ComboBoxClass4" id="ADD_addin.combobox_1" itemSizeString="WWWWWW" message="" rows="4" sizeString="WWWWWW" tip=""><Help heading="" /></ComboBox>
+        <Button caption="Clip" category="Python_Addin" class="ButtonClass5" id="ADD_addin.button_1" image="" message="" tip=""><Help heading="" /></Button>
+        </Commands>
+    <Extensions>
+        </Extensions>
+    <Toolbars>
+        <Toolbar caption="myClip" category="Python_Addin" id="ADD_addin.toolbar" showInitially="true"><Items><Button refID="ADD_addin.button" /><ComboBox refID="ADD_addin.combobox" /><ComboBox refID="ADD_addin.combobox_1" /><Button refID="ADD_addin.button_1" /></Items></Toolbar>
+        </Toolbars>
+    <Menus>
+        </Menus>
+    </ArcMap></AddIn></ESRI.Configuration>
